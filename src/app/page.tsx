@@ -1,8 +1,19 @@
-export default function HomePage() {
-  return (
-    <div className="text-center">
-      <h1 className="text-4xl font-bold mb-4">Welcome to EventMate</h1>
-      <p className="text-gray-700">Discover and book amazing events.</p>
-    </div>
-  );
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { redirect } from "next/navigation";
+
+export default async function HomePage() {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/auth/login");
+  }
+
+  const role = session.user.role;
+
+  if (role === "ADMIN") redirect("/dashboard/admin");
+  if (role === "ORGANIZER") redirect("/dashboard/organizer");
+  if (role === "USER") redirect("/dashboard/user");
+
+  redirect("/auth/login");
 }

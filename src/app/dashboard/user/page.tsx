@@ -1,8 +1,8 @@
-export default function UserDashboardPage() {
+export default function UserDashboard() {
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">User Dashboard</h1>
-      <p>Your bookings will appear here.</p>
+      <h1 className="text-2xl font-semibold">User Dashboard</h1>
+      <p className="mt-2 text-gray-600">View and manage your tickets.</p>
     </div>
   );
 }

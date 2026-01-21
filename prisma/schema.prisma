@@ -1,10 +1,14 @@
 generator client {
-  provider = "prisma-client-js"
+  provider   = "prisma-client-js"
+  engineType = "binary"
+  
 }
 
 datasource db {
   provider = "sqlite"
+  url      = "file:./dev.db"
 }
+
 
 enum Role {
   USER

@@ -9,6 +9,13 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    url: process.env["DATABASE_URL"],
+    // Ensure DATABASE_URL is set at build/runtime. Throw early if missing so TypeScript
+    // receives a `string` value and the runtime fails loudly instead of producing
+    // an ambiguous configuration.
+    url: (() => {
+      const url = process.env["DATABASE_URL"];
+      if (!url) throw new Error("Environment variable DATABASE_URL is not set");
+      return url;
+    })(),
   },
 });
