@@ -1,8 +1,24 @@
+/* src/styles/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
+/* body {
   @apply bg-gray-50 text-gray-900;
   font-family: "Inter", sans-serif;
+} */
+
+:root {
+  --background: 255 255 255;
+  --foreground: 17 24 39;
+}
+
+.dark {
+  --background: 17 24 39;
+  --foreground: 243 244 246;
+}
+
+body {
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
 }

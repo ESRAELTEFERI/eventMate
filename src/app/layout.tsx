@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { ThemeProvider } from "../components/theme-provider";
+import { ThemeToggle } from "../components/theme-toggle";
 
 export const metadata = {
   title: "EventMate",
@@ -12,12 +14,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // return (
+  //   <html lang="en">
+  //     <body className="flex flex-col min-h-screen">
+  //       {/* <Navbar /> */}
+  //       <main className="flex-1 container mx-auto px-2 py-1">{children}</main>
+  //       <Footer />
+  //     </body>
+  //   </html>
+  // );
   return (
-    <html lang="en">
-      <body className="flex flex-col min-h-screen">
-        <Navbar />
-        <main className="flex-1 container mx-auto px-4 py-6">{children}</main>
-        <Footer />
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-background text-foreground">
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
